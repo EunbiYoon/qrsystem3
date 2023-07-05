@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Package{% endblock %}
+
+{% block navigator %}<a  class="menu" href="{% url 'home_url' %}"><h4>Home</h4></a>{% endblock %}
+
+{% block container %}
+    {% load static %}
+    <div class="search-detail">
+        <input type="text" id="filterInput" placeholder="Search Your Package" oninput="filterTable()" required pattern="\S+.*" >
+        <table id="myTable">
+            <thead>
+              <tr>
+                <th>Tracking Number</th>
+                <th>Arriving Date</th>
+                <th>Receiver</th>
+                <th>Receiver Check</th>
+                <th>Security Check</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for item in item_list %}
+                    <tr>
+                        <td onclick="copyText(this)"><p class="track_number">{{ item.code_data }} <i class="fa fa-copy"></i></p></td>
+                        <td><p>{{ item.arriving_at|date:"m/d/y h:i a" }}</p></td>
+                        <td><p>{{ item.receiver }}</p></td>
+
+                        {% if item.receiver_check %}
+                            <td><p>{{ item.receiver_at|date:"m/d/y h:i a" }}</p></td>
+                        {% else %}
+                            <td>
+                                {% if username == item.receiver %}
+                                    <center><a href="{% url 'searchout_url' %}">Checkout</a></center>
+                                {% else %}
+                                    <center>-</center>
+                                {% endif %}
+                            </td>
+                        {% endif %}
+
+                        {% if item.admin_check %}
+                            <td><p>{{ item.admin_at|date:"m/d/y h:i a" }}</p></td>
+                        {% else %}
+                            <td>
+                                {% if user.is_superuser %}
+                                    <center><a href="{% url 'searchout_url' %}">Checkout</a></center>
+                                {% else %}
+                                    <center>-</center>
+                                {% endif %}
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% load static %}
+    <script src="{% static 'js/search.js' %}"></script>
+    <script src="{% static 'js/copytext2.js' %}"></script>
+    <script src="https://use.fontawesome.com/694dc84b9e.js"></script>
+{% endblock %}

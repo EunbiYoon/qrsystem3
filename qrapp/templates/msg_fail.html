@@ -1,0 +1,16 @@
+ {% extends 'base.html' %}
+
+{% block title %}Message{% endblock %}
+
+{% block container %}
+    <div class="message-fail">
+        {% load static %}
+        <img src="../../statics/icon/fail2.png">
+        <h1 class="info">{{error}}</h1>
+        <div class="menu">
+            <a class="back" onclick="history.back()"><h4>Go Back</h4></a>
+            <a class="result" href="{% url 'search_url' %}"><h4>Check Result</h4></a>
+            <a class="home" href="{% url 'home_url' %}"><h4>Home</h4></a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Shipping Center{% endblock %}
+
+{% block container %}
+    <div class="add">
+        <h1>Tracking Number</h1>
+        <div class="add-menu">
+            <a class="add-scan" href="{% url 'addscan_url' %}"><h3>Exist</h3></a>
+            <a class="add-gen" href="{% url 'addgen_url' %}"><h3>No Exist</h3></a>
+        </div>
+    </div>
+{% endblock %}

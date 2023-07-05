@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Shipping Center{% endblock %}
+
+{% block container %}
+    <div class="home-container">
+        <div class="home-background">
+            <div class="home-info">
+                <h1>LGEUS TN Delivery Center</h1>
+                <h3>Check your package shipping status in here!</h3>
+                <h3>w/ LGEUS TN Factory Security</h3>
+            </div>
+        </div>
+        <a class="home-search" href="{% url 'search_url'%}">
+            <h1 class="menu">Search Package</h1>
+            <img src="https://t4.ftcdn.net/jpg/02/21/22/63/240_F_221226305_9Gij9LQt2ooEM712qQ9TDwpkXMvfqdwp.jpg"/>
+        </a>
+        <a class="home-checkout" href="{% url 'checkout_url'%}">
+            <h1 class="menu">Checkout</h1>
+            <img src="https://t4.ftcdn.net/jpg/02/68/61/11/240_F_268611102_4omJUfdGvvZ4xMLLn92RlA6xz4A8g4Xb.jpg"/>
+        </a>
+        <a class="home-add" href="{% url 'add_url'%}">
+            <h1 class="menu">Add New</h1>
+            <img src='https://t3.ftcdn.net/jpg/02/15/13/02/240_F_215130263_GyMwGP6LbToxkuVNEsy1KTv2ScfEJWoQ.jpg'/>
+        </a>
+    </div>
+{% endblock %}

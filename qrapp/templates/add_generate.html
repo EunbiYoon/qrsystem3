@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Shipping Center{% endblock %}
+
+{% block container %}
+    <div class="generate">
+        <div class="generate-content">
+            <h1 align="center">QR Code Generator</h1>
+            <center><img src="" id="img"></center>
+            <h5>
+                <select id="size">
+                    <option value="100">100x100</option>
+                    <option value="150">150x150</option>
+                    <option value="200">200x200</option>
+                    <option value="250" selected>250x250</option>
+                    <option value="300">300x300</option>
+                </select>
+            </h5>
+            <h3><textarea placeholder="Enter Tracking Number" id="qrtext"></textarea></h3>
+            <h3><input type="submit" value="generate" onclick="genQR()"></h3>
+        </div>
+    </div>
+    {% load static %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{% static 'js/generate.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Checkout Package{% endblock %}
+
+{% block container %}
+    <div class="checkout">
+        <div class="checkout-container">
+            <form method="post" action="{% url 'checkout_url' %}">
+                {% csrf_token %}
+                <div class="checkout-package">
+                    <h1>Tracking Number</h1>
+                    <h5 id="info">Scan QR Code or Enter Manually</h5>
+                    <div name="reader" class="reader" id="reader"></div>
+                    <div id="choose" class="choose">or</div>
+                    <input type="text" class="result" name="result" id="result" placeholder="1234 5678 9123" oninput="addSpaces()">
+                    <button class="submit" id="submit" type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% load static %}
+    <script src="{% static 'js/html5-qrcode.min.js' %}"></script>
+    <script src="{% static 'js/qrscan2.js' %}"></script>
+    <script src="{% static 'js/inputspace.js' %}"></script>
+
+{% endblock %}
